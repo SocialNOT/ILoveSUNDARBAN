@@ -1,0 +1,7 @@
+{
+  "name": "I💚Sundarban",
+  "description": "A configurable AI research console template.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}

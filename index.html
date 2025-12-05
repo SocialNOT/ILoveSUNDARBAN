@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>I💚Sundarban</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+      @keyframes marquee {
+        0% { transform: translateX(50%); }
+        100% { transform: translateX(-150%); }
+      }
+      .animate-marquee {
+        animation: marquee 25s linear infinite;
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .animate-fade-in {
+        animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      }
+
+      @keyframes border-pulse {
+        0% { border-color: rgb(var(--color-border)); box-shadow: 0 0 0 0 rgba(var(--color-accent), 0); }
+        50% { border-color: rgb(var(--color-accent)); box-shadow: 0 0 8px 0 rgba(var(--color-accent), 0.3); }
+        100% { border-color: rgb(var(--color-border)); box-shadow: 0 0 0 0 rgba(var(--color-accent), 0); }
+      }
+      .animate-border-glow {
+        animation: border-pulse 3s infinite;
+      }
+      
+      @keyframes spin-slow {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+      .animate-spin-slow {
+        animation: spin-slow 10s linear infinite;
+      }
+
+      /* SLEEK GLOWING SCROLLBARS */
+      ::-webkit-scrollbar {
+        width: 4px; /* Very thin */
+        height: 4px; /* Very thin for horizontal */
+      }
+      
+      ::-webkit-scrollbar-track {
+        background: transparent; 
+      }
+      
+      ::-webkit-scrollbar-thumb {
+        background: rgb(var(--color-border));
+        border-radius: 99px;
+        transition: all 0.3s ease;
+      }
+      
+      ::-webkit-scrollbar-thumb:hover {
+        background: rgb(var(--color-accent));
+        box-shadow: 0 0 10px rgb(var(--color-accent)); /* Glowing effect */
+      }
+
+      /* Firefox Support */
+      * {
+        scrollbar-width: thin;
+        scrollbar-color: rgb(var(--color-border)) transparent;
+      }
+    </style>
+    <script>
+      tailwind.config = {
+        darkMode: ['class', '[data-mode="dark"]'],
+        theme: {
+          extend: {
+            fontFamily: {
+              serif: ['"Cormorant Garamond"', 'serif'],
+              mono: ['"JetBrains Mono"', 'monospace'],
+            },
+            colors: {
+              skin: {
+                fill: 'rgb(var(--color-fill) / <alpha-value>)',
+                'fill-panel': 'rgb(var(--color-fill-panel) / <alpha-value>)',
+                'fill-element': 'rgb(var(--color-fill-element) / <alpha-value>)',
+                base: 'rgb(var(--color-text-base) / <alpha-value>)',
+                muted: 'rgb(var(--color-text-muted) / <alpha-value>)',
+                accent: 'rgb(var(--color-accent) / <alpha-value>)',
+                border: 'rgb(var(--color-border) / <alpha-value>)',
+              },
+            },
+          },
+        },
+      }
+    </script>
+    <style>
+      /* HIGH CONTRAST & BOLDER FONTS */
+      body {
+        font-weight: 500; /* font-medium */
+      }
+      
+      /* THEME VARIABLES (RGB Triplets for Tailwind Opacity Support) */
+      
+      /* 1. MONDAY (Focus/Blue) */
+      [data-theme="monday"][data-mode="dark"] {
+        --color-fill: 15 23 42; /* Slate 900 */
+        --color-fill-panel: 30 41 59; /* Slate 800 */
+        --color-fill-element: 51 65 85; /* Slate 700 */
+        --color-text-base: 255 255 255; /* White */
+        --color-text-muted: 255 255 255; /* White (High Vis) */
+        --color-accent: 56 189 248; /* Sky 400 */
+        --color-border: 71 85 105; /* Slate 600 */
+      }
+      [data-theme="monday"][data-mode="light"] {
+        --color-fill: 241 245 249; /* Slate 100 */
+        --color-fill-panel: 255 255 255; /* White */
+        --color-fill-element: 226 232 240; /* Slate 200 */
+        --color-text-base: 0 0 0; /* Black */
+        --color-text-muted: 0 0 0; /* Black (High Vis) */
+        --color-accent: 2 132 199; /* Sky 600 */
+        --color-border: 203 213 225; /* Slate 300 */
+      }
+
+      /* 2. TUESDAY (Growth/Green) */
+      [data-theme="tuesday"][data-mode="dark"] {
+        --color-fill: 2 44 34; /* Emerald 950 */
+        --color-fill-panel: 6 78 59; /* Emerald 900 */
+        --color-fill-element: 6 95 70; /* Emerald 800 */
+        --color-text-base: 255 255 255;
+        --color-text-muted: 255 255 255;
+        --color-accent: 52 211 153; /* Emerald 400 */
+        --color-border: 16 185 129; /* Emerald 500 */
+      }
+      [data-theme="tuesday"][data-mode="light"] {
+        --color-fill: 236 253 245; /* Emerald 50 */
+        --color-fill-panel: 255 255 255;
+        --color-fill-element: 209 250 229; /* Emerald 100 */
+        --color-text-base: 0 0 0;
+        --color-text-muted: 0 0 0;
+        --color-accent: 5 150 105; /* Emerald 600 */
+        --color-border: 110 231 183; /* Emerald 300 */
+      }
+
+      /* 3. WEDNESDAY (Flow/Teal) */
+      [data-theme="wednesday"][data-mode="dark"] {
+        --color-fill: 8 51 68; /* Cyan 950 */
+        --color-fill-panel: 22 78 99; /* Cyan 900 */
+        --color-fill-element: 21 94 117; /* Cyan 800 */
+        --color-text-base: 255 255 255;
+        --color-text-muted: 255 255 255;
+        --color-accent: 34 211 238; /* Cyan 400 */
+        --color-border: 6 182 212; /* Cyan 500 */
+      }
+      [data-theme="wednesday"][data-mode="light"] {
+        --color-fill: 236 254 255; /* Cyan 50 */
+        --color-fill-panel: 255 255 255;
+        --color-fill-element: 207 250 254; /* Cyan 100 */
+        --color-text-base: 0 0 0;
+        --color-text-muted: 0 0 0;
+        --color-accent: 8 145 178; /* Cyan 600 */
+        --color-border: 103 232 249; /* Cyan 300 */
+      }
+
+      /* 4. THURSDAY (Energy/Purple) */
+      [data-theme="thursday"][data-mode="dark"] {
+        --color-fill: 59 7 100; /* Purple 950 */
+        --color-fill-panel: 88 28 135; /* Purple 900 */
+        --color-fill-element: 107 33 168; /* Purple 800 */
+        --color-text-base: 255 255 255;
+        --color-text-muted: 255 255 255;
+        --color-accent: 192 132 252; /* Purple 400 */
+        --color-border: 147 51 234; /* Purple 600 */
+      }
+      [data-theme="thursday"][data-mode="light"] {
+        --color-fill: 250 245 255; /* Purple 50 */
+        --color-fill-panel: 255 255 255;
+        --color-fill-element: 243 232 255; /* Purple 100 */
+        --color-text-base: 0 0 0;
+        --color-text-muted: 0 0 0;
+        --color-accent: 147 51 234; /* Purple 600 */
+        --color-border: 216 180 254; /* Purple 300 */
+      }
+
+      /* 5. FRIDAY (Passion/Red) - UPDATED SUNDARBAN THEME */
+      [data-theme="friday"][data-mode="dark"] {
+        --color-fill: 127 29 29; /* Main maroon background (red-900) */
+        --color-fill-panel: 69 10 10; /* Darker header/footer (red-950) */
+        --color-fill-element: 153 27 27; /* Buttons, cards, inputs (red-800) */
+        --color-text-base: 255 255 255; /* White */
+        --color-text-muted: 254 226 226; /* Light pink/red */
+        --color-accent: 248 113 113; /* Lighter red accent */
+        --color-border: 185 28 28; /* Red-700 for borders */
+      }
+      [data-theme="friday"][data-mode="light"] {
+        --color-fill: 254 242 242; /* Red 50 */
+        --color-fill-panel: 255 255 255;
+        --color-fill-element: 254 226 226; /* Red 100 */
+        --color-text-base: 0 0 0;
+        --color-text-muted: 0 0 0;
+        --color-accent: 220 38 38; /* Red 600 */
+        --color-border: 252 165 165; /* Red 300 */
+      }
+
+      /* 6. SATURDAY (Luxury/Gold) - DEFAULT */
+      [data-theme="saturday"][data-mode="dark"] {
+        --color-fill: 2 6 23; /* Slate 950 */
+        --color-fill-panel: 15 23 42; /* Slate 900 */
+        --color-fill-element: 30 41 59; /* Slate 800 */
+        --color-text-base: 255 255 255;
+        --color-text-muted: 255 255 255;
+        --color-accent: 251 191 36; /* Amber 400 */
+        --color-border: 51 65 85; /* Slate 700 */
+      }
+      [data-theme="saturday"][data-mode="light"] {
+        --color-fill: 253 251 247; /* Cream */
+        --color-fill-panel: 255 255 255;
+        --color-fill-element: 241 245 249; /* Slate 100 */
+        --color-text-base: 0 0 0;
+        --color-text-muted: 0 0 0;
+        --color-accent: 217 119 6; /* Amber 600 */
+        --color-border: 226 232 240; /* Slate 200 */
+      }
+
+      /* 7. SUNDAY (Wisdom/Brown) */
+      [data-theme="sunday"][data-mode="dark"] {
+        --color-fill: 42 35 30; /* Dark Coffee */
+        --color-fill-panel: 66 50 40;
+        --color-fill-element: 85 65 55;
+        --color-text-base: 255 255 255;
+        --color-text-muted: 255 255 255;
+        --color-accent: 194 162 133; /* Tan */
+        --color-border: 120 90 70;
+      }
+      [data-theme="sunday"][data-mode="light"] {
+        --color-fill: 245 230 211; /* Parchment */
+        --color-fill-panel: 253 245 235;
+        --color-fill-element: 235 220 200;
+        --color-text-base: 0 0 0;
+        --color-text-muted: 0 0 0;
+        --color-accent: 140 107 74; /* Leather */
+        --color-border: 210 180 160;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/",
+    "react/": "https://aistudiocdn.com/react@^19.2.1/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.31.0",
+    "react-markdown": "https://aistudiocdn.com/react-markdown@^10.1.0",
+    "firebase/": "https://aistudiocdn.com/firebase@^12.6.0/",
+    "vite": "https://aistudiocdn.com/vite@^7.2.6",
+    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.1",
+    "@supabase/supabase-js": "https://aistudiocdn.com/@supabase/supabase-js@^2.86.2"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="touch-manipulation">
+    <div id="root"></div>
+    <script type="module" src="./index.tsx"></script>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+
+/*
+ * SAMSAYA AI BOILERPLATE
+ * An Initiative of I💚Sundarban
+ * Coded by Rajib Singh
+ * Contact: admin@ilovesundarban.com | +91 7998300083
+ */
+
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+
+const rootElement = document.getElementById('root');
+if (!rootElement) {
+  throw new Error("Could not find root element to mount to");
+}
+
+const root = ReactDOM.createRoot(rootElement);
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
